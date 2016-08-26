@@ -14,7 +14,12 @@ public class TestTopologyStaticHosts {
 
 
     public static class PrinterBolt extends BaseBasicBolt {
-        @Override
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 8993000704080009345L;
+
+		@Override
         public void declareOutputFields(OutputFieldsDeclarer declarer) {
         }
 

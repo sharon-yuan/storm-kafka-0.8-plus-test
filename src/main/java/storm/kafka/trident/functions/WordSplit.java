@@ -6,7 +6,12 @@ import storm.trident.operation.TridentCollector;
 import storm.trident.tuple.TridentTuple;
 
 public class WordSplit extends BaseFunction {
-    public void execute(TridentTuple tuple, TridentCollector collector) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1905442745181340666L;
+
+	public void execute(TridentTuple tuple, TridentCollector collector) {
         String sentence = (String) tuple.getValue(0);
         if (sentence != null) {
             sentence = sentence.replaceAll("\r", "");

@@ -10,6 +10,8 @@ import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.topology.base.BaseBasicBolt;
 import backtype.storm.tuple.Tuple;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +21,12 @@ public class KafkaSpoutTestTopology {
     public static final Logger LOG = LoggerFactory.getLogger(KafkaSpoutTestTopology.class);
 
     public static class PrinterBolt extends BaseBasicBolt {
-        @Override
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = -3930258459788250128L;
+
+		@Override
         public void declareOutputFields(OutputFieldsDeclarer declarer) {
         }
 
@@ -37,7 +44,7 @@ public class KafkaSpoutTestTopology {
     }
 
     public StormTopology buildTopology() {
-        SpoutConfig kafkaConfig = new SpoutConfig(brokerHosts, "storm-sentence", "", "storm");
+        SpoutConfig kafkaConfig = new SpoutConfig(brokerHosts, "zoom_log", "", "storm");
         kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
         TopologyBuilder builder = new TopologyBuilder();
         builder.setSpout("words", new KafkaSpout(kafkaConfig), 10);

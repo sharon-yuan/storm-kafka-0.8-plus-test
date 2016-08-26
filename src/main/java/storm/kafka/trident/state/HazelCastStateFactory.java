@@ -10,7 +10,13 @@ import java.util.Map;
 public class HazelCastStateFactory implements StateFactory {
 
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2533595825619787406L;
+
+	@SuppressWarnings("unchecked")
+	@Override
     public State makeState(Map conf, IMetricsContext metrics, int partitionIndex, int numPartitions) {
         return TransactionalMap.build(new HazelCastState(new HazelCastHandler()));
     }
